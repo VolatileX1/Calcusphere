@@ -1,4 +1,5 @@
 import math
+import matplotlib.pyplot as plt
 
 def add(num1, num2):
     return num1 + num2
@@ -30,8 +31,20 @@ def tan(degrees):
     radians = math.radians(degrees)
     return math.tan(radians)
 
-def log(num):
-    return math.log(num)
+def arcsin(value):
+    radians = math.asin(value)
+    return math.degrees(radians)
+
+def arccos(value):
+    radians = math.acos(value)
+    return math.degrees(radians)
+
+def arctan(value):
+    radians = math.atan(value)
+    return math.degrees(radians)
+
+def log(num, base):
+    return math.log(num, base)
 
 def ln(num):
     return math.log(num, math.e)
@@ -71,17 +84,21 @@ print("6.Sqrt")
 print("7.Sine")
 print("8.Cosine")
 print("9.Tangent")
-print("10.Logarithm")
-print("11.Natural Logarithm")
-print("12.Factorial")
-print("13.Percentage Calculation")
-print("14.Imperial to Metric Conversion")
-print("15.Metric to Imperial Conversion")
-print("16.Currency Conversion")
-print("17.Memory Function")
+print("10.Arcsine")
+print("11.Arccosine")
+print("12.Arctangent")
+print("13.Logarithm")
+print("14.Natural Logarithm")
+print("15.Factorial")
+print("16.Percentage Calculation")
+print("17.Imperial to Metric Conversion")
+print("18.Metric to Imperial Conversion")
+print("19.Currency Conversion")
+print("20.Memory Function")
+print("21.Graphing")
 
 while True:
-    choice = input("Enter choice(1-17): ")
+    choice = input("Enter choice(1-21): ")
 
     if choice in ('1', '2', '3', '4', '5', '6'):
         num1 = float(input("Enter first number: "))
@@ -108,63 +125,91 @@ while True:
             memory.append("sqrt(" + str(num1) + ")" + "=" + str(sqrt(num1)))
         else:
             print("Invalid Input")
-    elif choice in ('7', '8', '9'):
+    elif choice in ('7', '8', '9', '10', '11', '12'):
         degrees = float(input("Enter degrees: "))
 
         if choice == '7':
             print("sin(", degrees, ")=", sin(degrees))
-            memory.append("sin(" + str(degrees) + ")" + "=" + str(sin(degrees)))
+            memory.append("sin(" + str(degrees) + ")=" + str(sin(degrees)))
+
         elif choice == '8':
             print("cos(", degrees, ")=", cos(degrees))
-            memory.append("cos(" + str(degrees) + ")" + "=" + str(cos(degrees)))
+            memory.append("cos(" + str(degrees) + ")=" + str(cos(degrees)))
         elif choice == '9':
             print("tan(", degrees, ")=", tan(degrees))
-            memory.append("tan(" + str(degrees) + ")" + "=" + str(tan(degrees)))
+            memory.append("tan(" + str(degrees) + ")=" + str(tan(degrees)))
+        elif choice == '10':
+            value = float(input("Enter the value of sin: "))
+            print("arcsin(", value, ")=", arcsin(value))
+            memory.append("arcsin(" + str(value) + ")=" + str(arcsin(value)))
+        elif choice == '11':
+            value = float(input("Enter the value of cos: "))
+            print("arccos(", value, ")=", arccos(value))
+            memory.append("arccos(" + str(value) + ")=" + str(arccos(value)))
+        elif choice == '12':
+            value = float(input("Enter the value of tan: "))
+            print("arctan(", value, ")=", arctan(value))
+            memory.append("arctan(" + str(value) + ")=" + str(arctan(value)))
         else:
             print("Invalid Input")
-    elif choice == '10':
-        num = float(input("Enter number: "))
-        base = float(input("Enter base: "))
-        print("log(", num, ",", base, ")=", log(num))
-        memory.append("log(" + str(num) + "," + str(base) + ")" + "=" + str(log(num)))
-    elif choice == '11':
-        num = float(input("Enter number: "))
-        print("ln(", num, ")=", ln(num))
-        memory.append("ln(" + str(num) + ")" + "=" + str(ln(num)))
-    elif choice == '12':
-        num = int(input("Enter number: "))
-        print(num, "!=", factorial(num))
-        memory.append(str(num) + "!" + "=" + str(factorial(num)))
-    elif choice == '13':
-        num = float(input("Enter number: "))
-        percentage = float(input("Enter percentage: "))
-        print(percentage, "% of", num, "=", percent(num, percentage))
-        memory.append(str(percentage) + "%" + "of" + str(num) + "=" + str(percent(num, percentage)))
-    elif choice == '14':
-        inches = float(input("Enter length in inches: "))
-        cm, m = imperial_to_metric(inches)
-        print(inches, "inches =", cm, "cm")
-        print(inches, "inches =", m, "m")
-        memory.append(str(inches) + "inches" + "=" + str(cm) + "cm")
-        memory.append(str(inches) + "inches" + "=" + str(m) + "m")
-    elif choice == '15':
-        cm = float(input("Enter length in centimeters: "))
-        inches, feet, remaining_inches = metric_to_imperial(cm)
-        print(cm, "cm =", inches, "inches")
-        print(cm, "cm =", feet, "feet and", remaining_inches, "inches")
-        memory.append(str(cm) + "cm" + "=" + str(inches) + "inches")
-        memory.append(str(cm) + "cm" + "=" + str(feet) + "feet" + str(remaining_inches) + "inches")
-    elif choice == '16':
-        amount = float(input("Enter amount: "))
-        exchange_rate = float(input("Enter exchange rate: "))
-        print(amount, "units =", currency_conversion(amount, exchange_rate), "units")
-        memory.append(str(amount) + "units" + "=" + str(currency_conversion(amount, exchange_rate)) + "units")
-    elif choice == '17':
-        if not memory:
-            print("Memory is empty!")
+    elif choice in ('13', '14'):
+        num = float(input("Enter a number: "))
+
+        if choice == '13':
+            base = int(input("Enter the base: "))
+            print("log(", num, ",", base, ")=", log(num, base))
+            memory.append("log(" + str(num) + "," + str(base) + ")=" + str(log(num, base)))
+        elif choice == '14':
+            print("ln(", num, ")=", ln(num))
+            memory.append("ln(" + str(num) + ")=" + str(ln(num)))
         else:
-            print("Memory:")
-            for i in range(len(memory)):
-                print(i+1, ":", memory[i])
+            print("Invalid Input")
+    elif choice == '15':
+        num = int(input("Enter a number: "))
+        print(num, "!=", factorial(num))
+        memory.append(str(num) + "!=" + str(factorial(num)))
+    elif choice == '16':
+        num = float(input("Enter the number: "))
+        percentage = float(input("Enter the percentage: "))
+        print(percentage, "% of", num, "=", percent(num, percentage))
+        memory.append(str(percentage) + "% of" + str(num) + "=" + str(percent(num, percentage)))
+    elif choice == '17':
+        inches = float(input("Enter the length in inches: "))
+        cm, m = imperial_to_metric(inches)
+        print(inches, "inches =", cm, "cm /", m, "meters")
+        memory.append(str(inches) + "inches =" + str(cm) + "cm /" + str(m) + "meters")
+    elif choice == '18':
+        cm = float(input("Enter the length in centimeters: "))
+        inches, feet, remaining_inches = metric_to_imperial(cm)
+        print(cm, "cm =", inches, "inches /", feet, "feet and", remaining_inches, "inches")
+        memory.append(str(cm) + "cm =" + str(inches) + "inches /" + str(feet) + "feet and" + str(remaining_inches) + "inches")
+    elif choice == '19':
+        amount = float(input("Enter the amount in USD: "))
+        exchange_rate = float(input("Enter the exchange rate: "))
+        print(amount, "USD =", currency_conversion(amount, exchange_rate), "foreign currency")
+        memory.append(str(amount) + "USD =" + str(currency_conversion(amount, exchange_rate)) + "foreign currency")
+    elif choice == '20':
+        print("Memory:", memory)
+    elif choice == '21':
+        expr = input("Enter a mathematical expression: ")
+        x_vals = []
+        y_vals = []
+
+        for i in range(-360, 361):
+            x = i
+            try:
+                y = eval(expr)
+            except ZeroDivisionError:
+                y = float('inf')
+            except:
+                continue
+            x_vals.append(x)
+            y_vals.append(y)
+
+        plt.plot(x_vals, y_vals)
+        plt.xlabel('x')
+        plt.ylabel('y')
+        plt.title('Graph of ' + expr)
+        plt.show()
     else:
-        print("Invalid Input") 
+        print("Invalid Input")
