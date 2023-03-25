@@ -1,6 +1,6 @@
 # Calcusphere
 
-Calcusphere is an all-in-one calculator written in Python. It includes a wide range of features, from basic arithmetic operations to advanced scientific functions such as sine, cosine, and tangent. With an intuitive user interface and powerful functionality, Calcusphere makes solving math problems a breeze.
+Calcusphere is an all-in-one calculator written in Python & coded with help of ChatGPT. It includes a wide range of features, from basic arithmetic operations to advanced scientific functions such as sine, cosine, and tangent. With an intuitive user interface and powerful functionality, Calcusphere makes solving math problems a breeze.
 
 Features:
 1. Offers a variety of mathematical operations, including addition, subtraction, multiplication, division, power, square root, trigonometric functions, logarithms, factorial, percentage calculation, and more.
